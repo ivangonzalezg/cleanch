@@ -13,8 +13,16 @@ read -s -n 1 yn
 if [ "$yn" = "S" ] || [ "$yn" = "s" ]; then
     sudo apt-get clean
     rm -rf ~/.cache/thumbnails/*
-    progressbar    
+    progressbar 1 "Caché limpiado."    
 else 
     echo "Tienes $tcache y $tthumb de espacio no necesario. ¿Segur@ que quieres conservarlo?"
 fi
+tcache=$(sudo du -sh /var/cache/apt | cut -d "/" -f 1)
+tthumb=$(du -sh ~/.cache/thumbnails | cut -d "/" -f 1)
+lcache=$((${#tcache} - 1))
+tcache=${tcache:0:$lcache}
+lthumb=$((${#tthumb} - 1))
+tthumb=${tthumb:0:$lthumb}
+echo "Nuevo tamaño del caché apt: $tcache"
+echo "Nuevo tamaño del caché thumbnails: $tthumb"
 

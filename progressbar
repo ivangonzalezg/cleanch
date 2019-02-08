@@ -1,0 +1,36 @@
+#!/bin/bash
+
+duration=$1
+if [[ $duration == "" ]] ; then
+    sleeptime=0.01
+else
+    if [ $duration -ge 0 2>/dev/null ]; then
+        sleeptime=$(echo "$duration / 100" | bc -l)
+    else
+        echo "Ingrese un número entero"
+        exit 0
+    fi
+fi
+if [[ $2 == "" ]] ; then
+    finishmessage="Finalizado."    
+else 
+    finishmessage=$2
+fi
+
+function ProgressBar {
+	let _progress=(${1}*100/${2}*100)/100
+	let _done=(${_progress}*5)/10
+	let _left=50-$_done
+	_done=$(printf "%${_done}s")
+	_left=$(printf "%${_left}s")
+    printf "\rProgreso : [${_done// /#}${_left// /-}] ${_progress}%%"
+}
+_start=1
+_end=100
+
+for number in $(seq ${_start} ${_end})
+do
+	sleep $sleeptime
+	ProgressBar ${number} ${_end}
+done
+printf "\n$finishmessage\n"

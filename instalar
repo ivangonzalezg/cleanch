@@ -8,4 +8,5 @@ echo "Carpeta detecatada: $binfolder"
 echo "Moviendo..."
 sleep 0.3
 sudo cp cleanch $binfolder
-echo "Listo, ya puedes usar la barra de progreso"
+sudo cp progressbar $binfolder
+echo "Listo, ya puedes usar cleanch"
