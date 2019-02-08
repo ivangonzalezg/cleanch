@@ -1,0 +1,11 @@
+#!/bin/bash
+
+[ "$UID" -eq 0 ] || exec sudo "$0" "$@"
+binfolder=$(echo $PATH | cut -d ":" -f 1)
+echo "Detectando carpeta de bin..."
+sleep 0.3
+echo "Carpeta detecatada: $binfolder"
+echo "Moviendo..."
+sleep 0.3
+sudo cp cleanch $binfolder
+echo "Listo, ya puedes usar la barra de progreso"
