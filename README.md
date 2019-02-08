@@ -22,3 +22,5 @@ cleanch
 * Revisa el tamaño del caché. \
 * Confirma presionando "S" o "s", en caso de que no quieras borrar presiona "n"
 * Listo, liberates espacio en tu equipo. 
+
+![Cleanch](https://raw.githubusercontent.com/ivangonzalezg/cleanch/master/cleanch.png)
